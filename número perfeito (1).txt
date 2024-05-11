@@ -1,0 +1,62 @@
+JMP start
+n: DB 2
+i: DB 1
+
+start:
+MOV D, [i]
+MOV C, [i]
+MOV B, [n]
+
+aqui:
+INC C
+MOV A, [n]
+DIV C
+MUL C
+CMP C, B
+JE marca:
+CMP A, B
+JE tag:
+JNE aqui:
+
+falso:
+MOV A, 'f'
+MOV [232], A
+MOV A, 'a'
+MOV [233], A
+MOV A, 'l'
+MOV [234], A
+MOV A, 's'
+MOV [235], A
+MOV A, 'o'
+MOV [236], A
+
+tag:
+ADD D, C
+CMP D, B
+JE verdade:
+JMP aqui:
+
+verdade:
+MOV A, 'p'
+MOV [232], A
+MOV A, 'e'
+MOV [233], A
+MOV A, 'r'
+MOV [234], A
+MOV A, 'f'
+MOV [235], A
+MOV A, 'e'
+MOV [236], A
+MOV A, 'i'
+MOV [237], A
+MOV A, 't'
+MOV [238], A
+MOV A, 'o'
+MOV [239], A
+HLT
+
+marca:
+CMP D, B
+JE verdade:
+CMP D, B
+JNE falso:
